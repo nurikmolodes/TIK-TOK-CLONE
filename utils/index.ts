@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { env } from 'process';
 
-export const BASE_URL = 'http://localhost:3000/' || 'https://shareme-social-media.vercel.app/'
+const condition = process.env.NODE_ENV
+export const BASE_URL = condition === 'development' ? 'http://localhost:3000/' : 'https://shareme-social-media.vercel.app/'
 
 export const createOrGetUser = async (response: any, addUser: any) => {
   var base64Url = response.credential.split('.')[1];
